@@ -15,6 +15,9 @@ This plugin adds a new CLI command `wazo-migrate-recording-uuid` that can be
 used to synchronize recording UUIDs manually. This command will be executed
 automatically upon installation and can be used afterwards.
 
+After the migration, the call recording UUIDs exposed in the wazo-call-logd API
+will be changed.
+
 ## Uninstallation
 
 ```sh
