@@ -18,6 +18,10 @@ automatically upon installation and can be used afterwards.
 After the migration, the call recording UUIDs exposed in the wazo-call-logd API
 will be changed.
 
+This plugin is only useful for Wazo servers installed before 24.12. Recording
+UUIDs created after Wazo 24.12 are automatically synchronized and do not need
+migration.
+
 ## Uninstallation
 
 ```sh
