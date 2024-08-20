@@ -1,0 +1,10 @@
+name: wazo-call-recording-uuid
+namespace: wazocommunication
+version: 1.0.0
+author: Wazo authors
+display_name: Call Recording UUID Migration
+min_wazo_version: 22.01
+tags:
+  - cdr
+  - recording
+homepage: https://github.com/wazo-communication/wazo-call-recording-uuid-plugin

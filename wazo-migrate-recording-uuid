@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo -u postgres psql asterisk -c " \
+  UPDATE call_logd_recording \
+  SET uuid = uuid(substring(path from '/var/lib/wazo/sounds/tenants/[^/]+/monitor/([^/]+).wav')) \
+  WHERE path ~ '/var/lib/wazo/sounds/tenants/[^/]+/monitor/([^/]+).wav'
+  AND path NOT LIKE concat('%',uuid,'%');\
+"
