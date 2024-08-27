@@ -9,7 +9,7 @@ system.
 wazo-plugind-cli -c "install git https://github.com/wazo-communication/wazo-call-recording-uuid-plugin"
 ```
 
-Installing this plugin does not cause interruption of service.
+Installing this plugin will restart `wazo-call-logd`.
 
 This plugin adds a new CLI command `wazo-migrate-recording-uuid` that can be
 used to synchronize recording UUIDs manually. This command will be executed
@@ -17,6 +17,9 @@ automatically upon installation and can be used afterwards.
 
 After the migration, the call recording UUIDs exposed in the wazo-call-logd API
 will be changed.
+
+After installing this plugin, all new call recordings UUIDs will be
+synchronized with storage filenames.
 
 This plugin is only useful for Wazo servers installed before 24.12. Recording
 UUIDs created after Wazo 24.12 are automatically synchronized and do not need
