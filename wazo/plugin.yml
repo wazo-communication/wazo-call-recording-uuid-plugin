@@ -1,9 +1,11 @@
 name: wazo-call-recording-uuid
 namespace: wazocommunication
-version: 1.0.0
+version: 1.1.0
 author: Wazo authors
 display_name: Call Recording UUID Migration
-min_wazo_version: 22.01
+plugin_format_version: 1
+min_wazo_version: 24.10
+max_wazo_version: 24.11
 tags:
   - cdr
   - recording

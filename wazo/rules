@@ -7,16 +7,21 @@ case "$1" in
         ;;
 
     package)
-        mkdir -p ${pkgdir}/usr/local/bin
-        cp wazo-migrate-recording-uuid ${pkgdir}/usr/local/bin/wazo-migrate-recording-uuid
+        mkdir -p "${pkgdir}/usr/bin"
+        mkdir -p "${pkgdir}/usr/share/wazo-call-recording-uuid"
+        cp wazo-migrate-recording-uuid "${pkgdir}/usr/bin/wazo-migrate-recording-uuid"
+        cp wazo-call-recording-uuid.patch "${pkgdir}/usr/share/wazo-call-recording-uuid/wazo-call-recording-uuid.patch"
         ;;
 
     install)
+        patch --verbose --reject-file - -p1 -d /usr/lib/python3/dist-packages/ < /usr/share/wazo-call-recording-uuid/wazo-call-recording-uuid.patch
+        systemctl restart wazo-call-logd
         wazo-migrate-recording-uuid
         ;;
 
     uninstall)
-        rm /usr/local/bin/wazo-migrate-recording-uuid
+        patch --verbose -p1 -R -d /usr/lib/python3/dist-packages/ < /usr/share/wazo-call-recording-uuid/wazo-call-recording-uuid.patch || true
+        systemctl restart wazo-call-logd
         ;;
 
     *)
